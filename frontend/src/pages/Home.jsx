@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Award, Users, HardHat, Home, Building2, Layers } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Award, Users, HardHat, Home as HomeIcon, Building2, Layers } from 'lucide-react';
 import Hero3D from '../components/Hero3D';
 import { companyInfo, stats, services, projects } from '../mock';
 
@@ -18,7 +18,7 @@ const Home = () => {
     Award,
     Users,
     HardHat,
-    Home,
+    Home: HomeIcon,
     Building2,
     Layers
   };
