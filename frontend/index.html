@@ -1,0 +1,612 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Constructions | Building Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+        
+        .glass-nav {
+            background: rgba(9, 9, 11, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Ken Burns Effect for Hero Background */
+        @keyframes ken-burns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .animate-ken-burns {
+            animation: ken-burns 20s ease-out infinite alternate;
+        }
+
+        /* Subtle Grid Pattern */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #09090b; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 selection:bg-yellow-500 selection:text-white overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="flex flex-col items-center gap-4">
+            <div class="text-white text-xl tracking-widest font-medium uppercase">Sai Constructions</div>
+            <div class="w-32 h-[1px] bg-zinc-800 overflow-hidden">
+                <div class="h-full bg-yellow-500 w-full animate-[ping_1.5s_infinite]"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-9 h-9 bg-white text-zinc-950 flex items-center justify-center font-bold tracking-tighter rounded-sm">SC</div>
+                    <span class="text-base font-medium tracking-tight text-white group-hover:text-zinc-300 transition-colors">Sai Constructions</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">About</a>
+                    <a href="#services" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Services</a>
+                    <a href="#projects" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Projects</a>
+                    <a href="#contact" class="px-4 py-2 text-xs font-medium bg-white text-zinc-950 hover:bg-zinc-200 transition-colors rounded-sm">Get a Quote</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white">
+                    <iconify-icon icon="lucide:menu" width="24" stroke-width="1.5"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Redesigned Hero Section -->
+    <header class="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-zinc-950">
+        <!-- Dynamic Background Image -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Modern Architecture" class="w-full h-full object-cover animate-ken-burns opacity-40">
+        </div>
+        
+        <!-- Overlays -->
+        <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/40 to-zinc-950 z-10"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-30 z-10 pointer-events-none"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-12">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="hero-anim opacity-0 translate-y-4 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 backdrop-blur-md mb-8">
+                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></span>
+                    <span class="text-[10px] font-medium tracking-widest uppercase text-yellow-500">Premium Construction Partner</span>
+                </div>
+                
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-white mb-6 leading-[1.05]">
+                    <span class="block hero-anim opacity-0 translate-y-8">Engineering the</span>
+                    <span class="block hero-anim opacity-0 translate-y-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">Future Skyline.</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg text-zinc-400 font-light max-w-xl mx-auto mb-10 hero-anim opacity-0 translate-y-8 leading-relaxed">
+                    We combine architectural precision with uncompromising durability. Sai Constructions delivers spaces that stand the test of time.
+                </p>
+
+                <!-- Actions -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center hero-anim opacity-0 translate-y-8">
+                    <a href="#projects" class="group px-8 py-3.5 bg-white text-zinc-950 text-sm font-medium hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2 rounded-sm">
+                        View Projects
+                        <iconify-icon icon="lucide:arrow-right" class="group-hover:translate-x-1 transition-transform duration-300" width="16"></iconify-icon>
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 glass-panel text-white text-sm font-medium hover:bg-white/10 transition-colors flex items-center justify-center rounded-sm">
+                        Schedule Consultation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats Footer (Floating Glass) -->
+            <div class="absolute bottom-0 left-0 w-full border-t border-white/10 bg-zinc-950/50 backdrop-blur-md z-30 hero-anim opacity-0 translate-y-8">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+                        <div class="py-6 px-4 text-center md:text-left">
+                            <div class="text-3xl text-white font-medium tracking-tight mb-1">25+</div>
+                            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Years Experience</div>
+                        </div>
+                        <div class="py-6 px-4 text-center md:text-left">
+                            <div class="text-3xl text-white font-medium tracking-tight mb-1">150+</div>
+                            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Projects</div>
+                        </div>
+                        <div class="py-6 px-4 text-center md:text-left">
+                            <div class="text-3xl text-white font-medium tracking-tight mb-1">100%</div>
+                            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Safety Record</div>
+                        </div>
+                        <div class="py-6 px-4 text-center md:text-left">
+                            <div class="text-3xl text-white font-medium tracking-tight mb-1">ISO</div>
+                            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">9001:2015 Certified</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative gsap-fade-right">
+                    <div class="aspect-[4/5] bg-zinc-100 overflow-hidden relative rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Construction Site" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-6 left-6 bg-white p-4 max-w-xs shadow-xl">
+                            <p class="text-xs text-zinc-500 uppercase tracking-wider mb-1">Current Focus</p>
+                            <p class="text-sm font-medium text-zinc-900">Sustainable Urban Development</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gsap-fade-left">
+                    <h2 class="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-4">Who We Are</h2>
+                    <h3 class="text-3xl md:text-5xl font-medium tracking-tight text-zinc-900 mb-6 leading-tight">
+                        Transforming blueprints into enduring <span class="text-zinc-400">masterpieces.</span>
+                    </h3>
+                    <p class="text-zinc-600 leading-relaxed mb-6 text-base font-light">
+                        At Sai Constructions, we believe that every structure tells a story. Founded on the principles of integrity, innovation, and uncompromising quality, we have established ourselves as leaders in the high-end residential and commercial construction sector.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-zinc-800">
+                            <div class="w-5 h-5 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                                <iconify-icon icon="lucide:check" width="12"></iconify-icon>
+                            </div>
+                            ISO 9001:2015 Certified
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-zinc-800">
+                            <div class="w-5 h-5 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                                <iconify-icon icon="lucide:check" width="12"></iconify-icon>
+                            </div>
+                            Sustainable Green Building Practices
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-zinc-800">
+                            <div class="w-5 h-5 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                                <iconify-icon icon="lucide:check" width="12"></iconify-icon>
+                            </div>
+                            End-to-End Project Management
+                        </li>
+                    </ul>
+
+                    <button class="text-sm font-medium text-zinc-900 border-b border-zinc-300 pb-1 hover:border-zinc-900 transition-colors">
+                        Read Our Story
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-zinc-50 border-t border-zinc-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 gsap-fade-up">
+                <div class="max-w-2xl">
+                    <h2 class="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-4">Our Expertise</h2>
+                    <h3 class="text-3xl md:text-4xl font-medium tracking-tight text-zinc-900">Comprehensive construction services tailored to your vision.</h3>
+                </div>
+                <a href="#contact" class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-zinc-900 hover:text-zinc-600 transition-colors">
+                    View all services <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="group p-8 bg-white border border-zinc-100 hover:border-zinc-300 transition-all duration-300 gsap-fade-up">
+                    <div class="w-12 h-12 bg-zinc-50 rounded-sm flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-zinc-900 group-hover:text-white transition-colors">
+                        <iconify-icon icon="lucide:building-2" width="24" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-medium text-zinc-900 mb-3 tracking-tight">General Contracting</h4>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">Full-scale construction management from ground breaking to final handover, ensuring timelines and budgets are met.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="text-xs text-zinc-400 flex items-center gap-2"><div class="w-1 h-1 bg-zinc-300 rounded-full"></div>Site Management</li>
+                        <li class="text-xs text-zinc-400 flex items-center gap-2"><div class="w-1 h-1 bg-zinc-300 rounded-full"></div>Budget Control</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group p-8 bg-white border border-zinc-100 hover:border-zinc-300 transition-all duration-300 gsap-fade-up" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-zinc-50 rounded-sm flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-zinc-900 group-hover:text-white transition-colors">
+                        <iconify-icon icon="lucide:ruler" width="24" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-medium text-zinc-900 mb-3 tracking-tight">Design &amp; Build</h4>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">Integrated project delivery where our architects and engineers work seamlessly to bring concepts to reality.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="text-xs text-zinc-400 flex items-center gap-2"><div class="w-1 h-1 bg-zinc-300 rounded-full"></div>Architectural Planning</li>
+                        <li class="text-xs text-zinc-400 flex items-center gap-2"><div class="w-1 h-1 bg-zinc-300 rounded-full"></div>Interior Design</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group p-8 bg-white border border-zinc-100 hover:border-zinc-300 transition-all duration-300 gsap-fade-up" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-zinc-50 rounded-sm flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-zinc-900 group-hover:text-white transition-colors">
+                        <iconify-icon icon="lucide:hammer" width="24" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-medium text-zinc-900 mb-3 tracking-tight">Renovation</h4>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">Transforming existing structures with structural reinforcement and modern aesthetic upgrades.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="text-xs text-zinc-400 flex items-center gap-2"><div class="w-1 h-1 bg-zinc-300 rounded-full"></div>Structural Repair</li>
+                        <li class="text-xs text-zinc-400 flex items-center gap-2"><div class="w-1 h-1 bg-zinc-300 rounded-full"></div>Modernization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 gsap-fade-up">
+                <div>
+                    <h2 class="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-4">Portfolio</h2>
+                    <h3 class="text-3xl md:text-4xl font-medium tracking-tight text-zinc-900">Featured Projects</h3>
+                </div>
+                <div class="flex gap-2">
+                    <button class="text-xs px-4 py-2 bg-zinc-900 text-white font-medium rounded-sm">All</button>
+                    <button class="text-xs px-4 py-2 bg-zinc-100 text-zinc-600 hover:bg-zinc-200 font-medium transition-colors rounded-sm">Commercial</button>
+                    <button class="text-xs px-4 py-2 bg-zinc-100 text-zinc-600 hover:bg-zinc-200 font-medium transition-colors rounded-sm">Residential</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group cursor-pointer gsap-fade-up">
+                    <div class="relative overflow-hidden aspect-[16/10] mb-4 bg-zinc-100 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="The Apex Tower" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0">
+                        <div class="absolute inset-0 bg-zinc-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-zinc-100 pb-4">
+                        <div>
+                            <h4 class="text-xl font-medium text-zinc-900 tracking-tight">The Apex Tower</h4>
+                            <p class="text-sm text-zinc-500 mt-1">Commercial HQ, Downtown</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white transition-all">
+                            <iconify-icon icon="lucide:arrow-up-right" width="16"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group cursor-pointer gsap-fade-up">
+                    <div class="relative overflow-hidden aspect-[16/10] mb-4 bg-zinc-100 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&amp;w=2700&amp;auto=format&amp;fit=crop" alt="Serenity Heights" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0">
+                        <div class="absolute inset-0 bg-zinc-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-zinc-100 pb-4">
+                        <div>
+                            <h4 class="text-xl font-medium text-zinc-900 tracking-tight">Serenity Heights</h4>
+                            <p class="text-sm text-zinc-500 mt-1">Luxury Residential Complex</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white transition-all">
+                            <iconify-icon icon="lucide:arrow-up-right" width="16"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / CTA Hybrid -->
+    <section class="py-24 bg-zinc-950 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-2/3 h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="gsap-fade-right">
+                    <h2 class="text-xs font-semibold text-yellow-500 tracking-widest uppercase mb-4">Why Sai Constructions</h2>
+                    <h3 class="text-3xl md:text-5xl font-medium tracking-tight mb-6 leading-tight">Built on Trust.<br>Defined by Quality.</h3>
+                    <p class="text-zinc-400 font-light text-lg mb-8 max-w-md">
+                        We don't just build structures; we build relationships founded on transparency, safety, and performance.
+                    </p>
+                    <a href="#contact" class="px-6 py-3 bg-white text-zinc-950 text-sm font-medium hover:bg-zinc-200 transition-colors inline-block rounded-sm">
+                        Start Your Project
+                    </a>
+                </div>
+                
+                <div class="grid gap-4">
+                    <div class="p-6 bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-colors gsap-fade-left rounded-sm">
+                        <div class="flex items-start gap-4">
+                            <iconify-icon icon="lucide:shield-check" width="24" class="text-yellow-500 mt-1"></iconify-icon>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1">Unmatched Durability</h4>
+                                <p class="text-sm text-zinc-400">Using only premium grade materials to ensure longevity and structural integrity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-colors gsap-fade-left rounded-sm" style="transition-delay: 100ms;">
+                        <div class="flex items-start gap-4">
+                            <iconify-icon icon="lucide:clock" width="24" class="text-yellow-500 mt-1"></iconify-icon>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1">Strict Timelines</h4>
+                                <p class="text-sm text-zinc-400">Advanced project management protocols to prevent delays and cost overruns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-colors gsap-fade-left rounded-sm" style="transition-delay: 200ms;">
+                        <div class="flex items-start gap-4">
+                            <iconify-icon icon="lucide:users" width="24" class="text-yellow-500 mt-1"></iconify-icon>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1">Expert Team</h4>
+                                <p class="text-sm text-zinc-400">Certified professionals handling every stage of the construction lifecycle.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="gsap-fade-up">
+                    <h2 class="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-4">Get in touch</h2>
+                    <h3 class="text-3xl md:text-5xl font-medium tracking-tight text-zinc-900 mb-8">Ready to build?</h3>
+                    <p class="text-zinc-600 mb-12">Contact our sales team directly to discuss your construction needs or request a detailed quote.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-zinc-100 flex items-center justify-center text-zinc-900 rounded-full">
+                                <iconify-icon icon="lucide:map-pin" width="18"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-zinc-900">Head Office</h4>
+                                <p class="text-sm text-zinc-500 mt-1">123 Construction Ave, Business Bay,<br>Metropolis City, 500001</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-zinc-100 flex items-center justify-center text-zinc-900 rounded-full">
+                                <iconify-icon icon="lucide:phone" width="18"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-zinc-900">Phone</h4>
+                                <p class="text-sm text-zinc-500 mt-1">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-zinc-100 flex items-center justify-center text-zinc-900 rounded-full">
+                                <iconify-icon icon="lucide:mail" width="18"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-zinc-900">Email</h4>
+                                <p class="text-sm text-zinc-500 mt-1">projects@saiconstructions.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-50 p-8 lg:p-12 border border-zinc-200 rounded-sm gsap-fade-up">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="group">
+                                <label class="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">First Name</label>
+                                <input type="text" class="w-full p-3 bg-white border border-zinc-200 focus:border-yellow-500 outline-none transition-colors text-zinc-900 rounded-sm" placeholder="John">
+                            </div>
+                            <div class="group">
+                                <label class="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Last Name</label>
+                                <input type="text" class="w-full p-3 bg-white border border-zinc-200 focus:border-yellow-500 outline-none transition-colors text-zinc-900 rounded-sm" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Email Address</label>
+                            <input type="email" class="w-full p-3 bg-white border border-zinc-200 focus:border-yellow-500 outline-none transition-colors text-zinc-900 rounded-sm" placeholder="john@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Project Type</label>
+                            <div class="relative">
+                                <select class="w-full p-3 bg-white border border-zinc-200 focus:border-yellow-500 outline-none transition-colors text-zinc-900 appearance-none rounded-sm cursor-pointer">
+                                    <option>Commercial Construction</option>
+                                    <option>Residential Build</option>
+                                    <option>Renovation</option>
+                                    <option>Consultation</option>
+                                </select>
+                                <iconify-icon icon="lucide:chevron-down" class="absolute right-3 top-3.5 text-zinc-400 pointer-events-none" width="16"></iconify-icon>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Message</label>
+                            <textarea rows="4" class="w-full p-3 bg-white border border-zinc-200 focus:border-yellow-500 outline-none transition-colors text-zinc-900 rounded-sm resize-none" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-zinc-900 text-white py-4 text-sm font-medium hover:bg-zinc-800 transition-all rounded-sm flex justify-center items-center gap-2">
+                            Send Enquiry <iconify-icon icon="lucide:send" width="16"></iconify-icon>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 text-white pt-24 pb-12 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-white text-zinc-950 flex items-center justify-center font-bold tracking-tighter rounded-sm">SC</div>
+                        <span class="text-lg font-semibold tracking-tight">Sai Constructions</span>
+                    </div>
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+                        Building the future with precision, passion, and performance.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-zinc-400 hover:text-white transition-colors"><iconify-icon icon="lucide:facebook" width="18"></iconify-icon></a>
+                        <a href="#" class="text-zinc-400 hover:text-white transition-colors"><iconify-icon icon="lucide:instagram" width="18"></iconify-icon></a>
+                        <a href="#" class="text-zinc-400 hover:text-white transition-colors"><iconify-icon icon="lucide:linkedin" width="18"></iconify-icon></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-medium mb-6 text-white">Company</h4>
+                    <ul class="space-y-3 text-sm text-zinc-500">
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">News &amp; Media</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-medium mb-6 text-white">Services</h4>
+                    <ul class="space-y-3 text-sm text-zinc-500">
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">General Contracting</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Design &amp; Build</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Renovation</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Project Management</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-medium mb-6 text-white">Legal</h4>
+                    <ul class="space-y-3 text-sm text-zinc-500">
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-zinc-600 text-xs">© 2024 Sai Constructions. All rights reserved.</p>
+                <div class="flex gap-6 text-zinc-600 text-xs">
+                    <span>Designed with Excellence</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none';
+                
+                // Trigger Hero Animations with GSAP
+                const tl = gsap.timeline();
+                
+                tl.to('.hero-anim', {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    stagger: 0.1,
+                    ease: 'power3.out'
+                });
+            }, 800);
+        });
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Standard Fade Up
+        gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                    }
+                }
+            );
+        });
+
+        // Fade Right
+        gsap.utils.toArray('.gsap-fade-right').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, x: -40 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                    }
+                }
+            );
+        });
+
+        // Fade Left
+        gsap.utils.toArray('.gsap-fade-left').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, x: 40 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                    }
+                }
+            );
+        });
+
+        // Navbar blur on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('glass-nav');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+        
+        // Initial nav state
+        if (window.scrollY <= 20) {
+            navbar.classList.remove('glass-nav');
+            navbar.classList.add('bg-transparent');
+        }
+
+    </script>
+
+</body></html>

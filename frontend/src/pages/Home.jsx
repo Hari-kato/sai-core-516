@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Award, Users, HardHat, Home as HomeIcon, Building2, Layers, Wrench, Palette, ClipboardCheck } from 'lucide-react';
 // import Hero3D from '../components/Hero3D';
 import { companyInfo, stats, services, projects } from '../mock';
+import Hero3D from '../components/Hero3D';
 
 const Home = () => {
   const fadeInUp = {
@@ -33,6 +34,7 @@ const Home = () => {
         {/* 3D Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           {/* <Hero3D /> */}
+          <Hero3D />
         </div>
 
         {/* Overlay */}
